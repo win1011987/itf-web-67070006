@@ -34,3 +34,30 @@
 .nom{
     font-size: 20px;
 }
+.center{
+    border-radius: 50%;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+}
+.center{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    padding: 20px;
+    border: 3px ;
+    border-color: black;
+    height: 30px;
+    width:auto;
+}
+.usertext{
+    margin: auto;
+    width: 30%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+    background-color: antiquewhite;
+    font-size:175%;
+    text-align: center;
+    
+}
