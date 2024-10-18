@@ -27,6 +27,12 @@
         h1 {
             text-align: center;
         }
+        p {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
     
     <div class = "photo" id = "photourl"></div>
@@ -45,6 +51,18 @@
         <input id="url">
         <button id="your-id" type="button" onclick="setImage()">Submit</button>
     </nav>
+    <h1>กรอกข้อมูลชื่อและเบอร์โทร</h1>
+    <nav class="center">
+        <input type="text" id="name" placeholder="ชื่อ" required>
+        <input type="text" id="phone" placeholder="เบอร์โทร" required>
+        <button onclick="addEntry()">Add</button>
+        <button onclick="exportCSV()">Export</button>
+    </nav>
+    <div id="list"></div>
+
+
+
+    
     <script>
     let ____ = 0;
     var phonenumber = [];
@@ -89,6 +107,47 @@
         document.getElementById("your-id").value = "";
         document.getElementById("your-idl").value = "";
     };
+    const entries = [];
+
+    function addEntry() {
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+
+        if (name && phone) {
+            entries.push({ name, phone });
+            displayEntries();
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            } else {
+            alert('กรุณากรอกชื่อและเบอร์โทร');
+            }
+    }
+
+    function displayEntries() {
+        const listDiv = document.getElementById('list');
+        listDiv.innerHTML = '';
+        entries.forEach((entry, index) => {
+            listDiv.innerHTML += `<p>${index + 1}. ${entry.name} - ${entry.phone}</p>`;
+        });
+    }
+
+        function exportCSV() {
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "ชื่อ,เบอร์โทร\n"; // header
+
+            entries.forEach(entry => {
+                csvContent += `${entry.name},${entry.phone}\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement('a');
+            link.setAttribute('href', encodedUri);
+            link.setAttribute('download', 'contacts.csv');
+            document.body.appendChild(link); // Required for Firefox
+
+            link.click();
+            document.body.removeChild(link);
+        }
 
     </script>
     <footer class="footer">it22</footer>
