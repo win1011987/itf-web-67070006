@@ -24,25 +24,17 @@
     </nav>
     
     <style>
-        p {
-            border-radius: 50%;
-            justify-content: center;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 180px;
-            height: 180px;
-            border: 3px black;
-            border-style: solid;
-        }
         h1 {
             text-align: center;
         }
     </style>
     
-    <p id = "photourl"></p>
+    <div class = "photo" id = "photourl"></div>
+    <nav class="stack">
+        <p>1</p>
+    </nav>
     <br>
-    <h1 id = "username" >67070006 Kasidate Sangsawang</h1>
+    <h1 id = "username">67070006 Kasidate Sangsawang</h1>
         <nav class="center">
         <b>Set the Username</b>
         <input id="your-id">
@@ -59,9 +51,9 @@
     const addBtn = document.getElementById("your-id");
     const saveButton = document.getElementById("your-id");
     console.log(saveButton.value)
-
+    document.getElementById("photourl").style.backgroundImage = "url("+"https://images-storage.thaiware.site/tips/2020_07/728/1330_200720174156mY_119.png"+")";
     function mOver(obj){
-        obj.innerHTML = 'asdsad'
+        obj.innerHTML = "asd"
     }
     
     function display(){
